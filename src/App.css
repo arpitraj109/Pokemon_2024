@@ -1,0 +1,48 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  align-items: center;
+  
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Light theme */
+  transition: background 0.5s ease;
+}
+
+[data-theme="dark"] .app {
+  background: linear-gradient(135deg, #232526, #414345); /* Dark theme */
+}
+
+/* Pokémon container */
+.pokemon-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.search-bar {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.search-input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+}

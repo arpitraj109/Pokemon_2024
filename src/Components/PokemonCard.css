@@ -1,0 +1,112 @@
+.pokemon-card {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .pokemon-card:hover {
+    transform: scale(1.1);
+  }
+  
+  .pokemon-image {
+    display: block;
+    margin: 0 auto 10px;
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .pokemon-name {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .pokemon-types {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .type-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    text-transform: capitalize;
+    background-color: rgba(0, 0, 0, 0.1); /* Default color */
+  }
+  
+  .type-grass {
+    background-color: #78c850;
+    color: white;
+  }
+  
+  .type-fire {
+    background-color: #f08030;
+    color: white;
+  }
+  .type-water{
+  background-color: #4b8fd2;
+  color: white;
+  }
+  .type-normal{
+    background-color: #d8d8d8;
+    color: white;
+  }
+  .type-electric{
+    background-color: #f9e125;
+    color: white;
+  }
+  .type-psychic{
+    background-color: #f85a5a;
+    color: white;
+  }
+  .type-ice{
+    background-color: #74c5c5;
+    color: white;
+  }
+  .type-bug{
+    background-color: #08a90f;
+    color: white;
+  }
+  .type-flying{
+    background-color: #b1c7f5;
+    color: white;
+  }
+  .type-poison{
+    background-color: #6b4f99;
+    color: white;
+  }
+  .type-fairy{
+    background-color: #f5a1c2;
+    color: white;
+  }
+  .type-ground{
+    background-color: #a3732b;
+    color: white;
+  }
+  
+  
+  .pokemon-stats {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .stat-name {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  
+  .stat-value {
+    color: var(--card-text);
+  }
+  
