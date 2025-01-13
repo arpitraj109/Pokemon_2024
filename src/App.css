@@ -16,7 +16,7 @@ h1 {
 }
 
 [data-theme="dark"] .app {
-  background: linear-gradient(135deg, #232526, #414345); /* Dark theme */
+  background: linear-gradient(135deg, #121313, #414345); /* Dark theme */
 }
 
 /* Pokémon container */
