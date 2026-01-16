@@ -1,13 +1,15 @@
 import React from "react";
-import "./Header.css"; 
-import logo from '../logo/logo.png'; 
+import "./Header.css";
+import logo from '../logo/logo.png';
 
 const Header = ({ theme, toggleTheme }) => {
   return (
     <div className="header">
-      
+
       <div className="header-content">
-        <img src={logo} alt="Pokedex Logo" className="header-logo" />
+        <a href="/" style={{ cursor: 'pointer' }}>
+          <img src={logo} alt="Pokedex Logo" className="header-logo" />
+        </a>
       </div>
       {/* Theme toggler */}
       <div className="theme-toggler">

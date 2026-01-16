@@ -1,160 +1,291 @@
 /* General Pokemon Card Styling */
 .pokemon-card {
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(0, 0, 0, 0.2); /* Add a defined border */
-  color: white; /* Text remains readable on colored backgrounds */
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  max-width: 300px;
-  margin: 15px auto; /* Center and add spacing */
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius);
+  padding: 30px 20px;
   text-align: center;
+  transition: all var(--transition-speed) cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1;
 }
 
-/* Hover Effect */
+.pokemon-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
 .pokemon-card:hover {
-  transform: scale(1.05);
-  border-color: rgba(0, 0, 0, 0.4); /* Slightly darken the border on hover */
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  z-index: 10;
+}
+
+.pokemon-card:hover::before {
+  opacity: 1;
 }
 
 /* Pokemon Image Styling */
 .pokemon-image {
-  display: block;
-  margin: 0 auto 10px;
-  max-width: 100px;
-  height: auto;
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.pokemon-card:hover .pokemon-image {
+  transform: scale(1.15) rotate(5deg);
 }
 
 /* Pokemon Name Styling */
 .pokemon-name {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
 }
 
-/* Pokemon Type Badge Styling */
+/* Type Badges */
 .pokemon-types {
   display: flex;
   justify-content: center;
-  gap: 5px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin-bottom: 25px;
 }
 
 .type-badge {
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 12px;
-  text-transform: capitalize;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
   color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
 }
 
-/* Type-Specific Card Background Colors */
-.type-normal {
-  background-color: #a8a77a;
-}
-
-.type-fire {
-  background-color: #ee8130;
-}
-
-.type-water {
-  background-color: #6390f0;
-}
-
-.type-electric {
-  background-color: #f7d02c;
-}
-
-.type-grass {
-  background-color: #7ac74c;
-}
-
-.type-ice {
-  background-color: #96d9d6;
-}
-
-.type-fighting {
-  background-color: #c22e28;
-}
-
-.type-poison {
-  background-color: #a33ea1;
-}
-
-.type-ground {
-  background-color: #e2bf65;
-}
-
-.type-flying {
-  background-color: #a98ff3;
-}
-
-.type-psychic {
-  background-color: #f95587;
-}
-
-.type-bug {
-  background-color: #a6b91a;
-}
-
-.type-rock {
-  background-color: #b6a136;
-}
-
-.type-ghost {
-  background-color: #735797;
-}
-
-.type-dragon {
-  background-color: #6f35fc;
-}
-
-.type-dark {
-  background-color: #705746;
-}
-
-.type-steel {
-  background-color: #b7b7ce;
-}
-
-.type-fairy {
-  background-color: #d685ad;
-}
-
-/* Pokemon Stats Styling */
+/* Stats Styling */
 .pokemon-stats {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 15px;
-  font-size: 1rem;
-  line-height: 1.5;
+  gap: 8px;
+  width: 100%;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 150px;
+  font-size: 14px;
+  gap: 10px;
 }
 
 .stat-name {
-  font-weight: bold;
-  color: var(--text-color, #333);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+  width: 50px;
   text-align: left;
 }
 
-.stat-value {
-  text-align: right;
-  color: var(--text-color, #555);
+/* Stat Bar */
+.stat-bar-container {
+  flex-grow: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .pokemon-card {
-    max-width: 90%; /* Adjust for smaller screens */
-  }
+.stat-bar-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  transition: width 1s ease-out;
+}
 
-  .pokemon-types {
-    flex-wrap: wrap; /* Wrap badges if they don’t fit */
-  }
+/* Card Backgrounds based on Type */
+.type-normal {
+  background: linear-gradient(135deg, rgba(168, 167, 122, 0.4), rgba(168, 167, 122, 0.1));
+  border-color: #a8a77a;
+}
+
+.type-fire {
+  background: linear-gradient(135deg, rgba(238, 129, 48, 0.4), rgba(238, 129, 48, 0.1));
+  border-color: #ee8130;
+}
+
+.type-water {
+  background: linear-gradient(135deg, rgba(99, 144, 240, 0.4), rgba(99, 144, 240, 0.1));
+  border-color: #6390f0;
+}
+
+.type-electric {
+  background: linear-gradient(135deg, rgba(247, 208, 44, 0.4), rgba(247, 208, 44, 0.1));
+  border-color: #f7d02c;
+}
+
+.type-grass {
+  background: linear-gradient(135deg, rgba(122, 199, 76, 0.4), rgba(122, 199, 76, 0.1));
+  border-color: #7ac74c;
+}
+
+.type-ice {
+  background: linear-gradient(135deg, rgba(150, 217, 214, 0.4), rgba(150, 217, 214, 0.1));
+  border-color: #96d9d6;
+}
+
+.type-fighting {
+  background: linear-gradient(135deg, rgba(194, 46, 40, 0.4), rgba(194, 46, 40, 0.1));
+  border-color: #c22e28;
+}
+
+.type-poison {
+  background: linear-gradient(135deg, rgba(163, 62, 161, 0.4), rgba(163, 62, 161, 0.1));
+  border-color: #a33ea1;
+}
+
+.type-ground {
+  background: linear-gradient(135deg, rgba(226, 191, 101, 0.4), rgba(226, 191, 101, 0.1));
+  border-color: #e2bf65;
+}
+
+.type-flying {
+  background: linear-gradient(135deg, rgba(169, 143, 243, 0.4), rgba(169, 143, 243, 0.1));
+  border-color: #a98ff3;
+}
+
+.type-psychic {
+  background: linear-gradient(135deg, rgba(249, 85, 135, 0.4), rgba(249, 85, 135, 0.1));
+  border-color: #f95587;
+}
+
+.type-bug {
+  background: linear-gradient(135deg, rgba(166, 185, 26, 0.4), rgba(166, 185, 26, 0.1));
+  border-color: #a6b91a;
+}
+
+.type-rock {
+  background: linear-gradient(135deg, rgba(182, 161, 54, 0.4), rgba(182, 161, 54, 0.1));
+  border-color: #b6a136;
+}
+
+.type-ghost {
+  background: linear-gradient(135deg, rgba(115, 87, 151, 0.4), rgba(115, 87, 151, 0.1));
+  border-color: #735797;
+}
+
+.type-dragon {
+  background: linear-gradient(135deg, rgba(111, 53, 252, 0.4), rgba(111, 53, 252, 0.1));
+  border-color: #6f35fc;
+}
+
+.type-dark {
+  background: linear-gradient(135deg, rgba(112, 87, 70, 0.4), rgba(112, 87, 70, 0.1));
+  border-color: #705746;
+}
+
+.type-steel {
+  background: linear-gradient(135deg, rgba(183, 183, 206, 0.4), rgba(183, 183, 206, 0.1));
+  border-color: #b7b7ce;
+}
+
+.type-fairy {
+  background: linear-gradient(135deg, rgba(214, 133, 173, 0.4), rgba(214, 133, 173, 0.1));
+  border-color: #d685ad;
+}
+
+/* Badge Colors (Solid) */
+.type-badge.type-normal {
+  background-color: #a8a77a;
+}
+
+.type-badge.type-fire {
+  background-color: #ee8130;
+}
+
+.type-badge.type-water {
+  background-color: #6390f0;
+}
+
+.type-badge.type-electric {
+  background-color: #f7d02c;
+}
+
+.type-badge.type-grass {
+  background-color: #7ac74c;
+}
+
+.type-badge.type-ice {
+  background-color: #96d9d6;
+}
+
+.type-badge.type-fighting {
+  background-color: #c22e28;
+}
+
+.type-badge.type-poison {
+  background-color: #a33ea1;
+}
+
+.type-badge.type-ground {
+  background-color: #e2bf65;
+}
+
+.type-badge.type-flying {
+  background-color: #a98ff3;
+}
+
+.type-badge.type-psychic {
+  background-color: #f95587;
+}
+
+.type-badge.type-bug {
+  background-color: #a6b91a;
+}
+
+.type-badge.type-rock {
+  background-color: #b6a136;
+}
+
+.type-badge.type-ghost {
+  background-color: #735797;
+}
+
+.type-badge.type-dragon {
+  background-color: #6f35fc;
+}
+
+.type-badge.type-dark {
+  background-color: #705746;
+}
+
+.type-badge.type-steel {
+  background-color: #b7b7ce;
+}
+
+.type-badge.type-fairy {
+  background-color: #d685ad;
 }

@@ -1,48 +1,77 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-h1 {
-  font-family: 'Press Start 2P', cursive;
-  align-items: center;
-  
-}
-
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Light theme */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   transition: background 0.5s ease;
 }
 
 [data-theme="dark"] .app {
-  background: linear-gradient(135deg, #121313, #414345); /* Dark theme */
+  background: linear-gradient(135deg, #232526, #414345);
+  /* Dark theme */
 }
 
 /* Pokémon container */
 .pokemon-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .search-bar {
-  margin: 20px auto;
+  margin: 40px auto;
   text-align: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  z-index: 10;
 }
 
 .search-input {
-  width: 80%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  outline: none;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+  font-family: var(--font-main);
+}
+
+.search-input:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
 }
 
 .error-message {
-  color: red;
-  font-size: 16px;
+  grid-column: 1 / -1;
+  justify-self: center;
+  color: #ff4d4d;
+  font-size: 18px;
   text-align: center;
   margin-top: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  backdrop-filter: blur(4px);
+  font-weight: bold;
 }
